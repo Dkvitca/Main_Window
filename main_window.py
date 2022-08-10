@@ -7,6 +7,7 @@ from PyQt5.QtCore import QTimer, QThread, pyqtSignal, pyqtSlot
 from PyQt5 import QtWidgets, QtCore, QtGui
 
 
+#Main Video Loop
 class Thread1(QThread):
     changePixmap = pyqtSignal(QImage)
     
@@ -26,9 +27,9 @@ class Thread1(QThread):
                 step1 = channel1 * width1
                 qImg1 = QImage(im1.data, width1, height1, step1, QImage.Format_RGB888)
                 self.changePixmap.emit(qImg1)
-
+#video Capture  
 class Thread2(QThread):
-    
+  
     def __init__(self, *args, **kwargs):
         super().__init__()
         self.active = True
@@ -50,7 +51,7 @@ class Thread2(QThread):
     def stop(self):
         self.out1.release()
 
-       
+#main Video class       
 class MainWindow(QWidget):
     
     def __init__(self):
@@ -70,6 +71,8 @@ class MainWindow(QWidget):
 
     
     
+    
+    #Pixmap => https://doc.qt.io/qtforpython-5/PySide2/QtGui/QPixmap.html
     @QtCore.pyqtSlot(QImage)
     def setImage(self, qImg1):
         self.image_label.setPixmap(QPixmap.fromImage(qImg1))
