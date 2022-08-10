@@ -1,3 +1,11 @@
+#important => sources: Qt for PY Documentation : https://doc.qt.io/qtforpython/
+#Pixmap => https://doc.qt.io/qtforpython-5/PySide2/QtGui/QPixmap.html
+#openCV2 documentation.py => https://docs.opencv.org/4.x/d6/d00/tutorial_py_root.html
+
+
+
+#BUG:
+#need to fix a bug in main loop. might be problem with opencv thread. THE SCRIPT runs, but once in a while soffers unknown crash
 import sys
 import cv2
 
@@ -72,7 +80,7 @@ class MainWindow(QWidget):
     
     
     
-    #Pixmap => https://doc.qt.io/qtforpython-5/PySide2/QtGui/QPixmap.html
+    
     @QtCore.pyqtSlot(QImage)
     def setImage(self, qImg1):
         self.image_label.setPixmap(QPixmap.fromImage(qImg1))
